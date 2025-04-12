@@ -4,16 +4,21 @@
     flex-wrap: wrap;
     padding: 16px;
   }
-  
+
   mat-card {
     margin-top: 10px;
 
     mat-card-content {
         display: flex;
         flex-direction: column;
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
         mat-form-field {
             margin-top: 10px;
-            align-self: center;
+            align-self: stretch;
         }
     }
   }

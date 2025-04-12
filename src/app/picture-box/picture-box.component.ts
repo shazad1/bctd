@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 import {MatCardModule} from '@angular/material/card';
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-picture-box',
-  imports: [MatCardModule, WebcamModule, CommonModule],
+  imports: [MatCardModule, WebcamModule, CommonModule, MatButtonModule],
   templateUrl: './picture-box.component.html',
   styleUrl: './picture-box.component.scss'
 })
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
 export class PictureBoxComponent {
   @Input() aspect: Aspect = Aspect.BACK;
   @Input() isTaken: boolean = false;
+  @Output() messageNavigation = new EventEmitter<number>();
   public showWebcam = true;
   public allowCameraSwitch = true;
   public multipleWebcamsAvailable = false;
@@ -80,5 +82,9 @@ export class PictureBoxComponent {
 
   public get nextWebcamObservable(): Observable<boolean|string> {
     return this.nextWebcam.asObservable();
+  }
+
+  sendNavigation(direction: number) {
+    this.messageNavigation.emit(direction);
   }
 }

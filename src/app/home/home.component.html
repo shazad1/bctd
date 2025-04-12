@@ -10,18 +10,36 @@
         <input matInput #input maxlength="20" (input)="onInput($event)" />
         <mat-hint align="end">{{value().length}}/20</mat-hint>
       </mat-form-field>
-    <mat-form-field>
-        <mat-label>Select Stage</mat-label>
-        <mat-select>
-          @for (stage of stages; track stage) {
-            <mat-option [value]="stage">{{stage}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Select Client</mat-label>
+          <mat-select>
+            @for (client of clients; track client) {
+              <mat-option [value]="client.name">{{client.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      <mat-form-field>
+          <mat-label>Select Stage</mat-label>
+          <mat-select>
+            @for (stage of stages; track stage) {
+              <mat-option [value]="stage">{{stage}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Assign Driver</mat-label>
+          <mat-select>
+            @for (driver of drivers; track driver) {
+              <mat-option [value]="driver.name">{{driver.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
   </mat-card-content>
 </mat-card>
 
-
-  <app-picture-box [aspect]="aspect" [isTaken]="false"></app-picture-box>
+@for (aspect of aspects; track aspect) {
+  <app-picture-box [aspect]="aspect" (messageNavigation)="receiveNavigation($event)" *ngIf="aspect == aspects[currentAspect]" [isTaken]="false"></app-picture-box>
+}
 
 

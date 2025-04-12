@@ -1,12 +1,12 @@
 <mat-card>
     <mat-card-header>
-  
+
       <mat-card-title>Add Photo of {{aspect}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <ng-container   *ngIf="!isTaken"
         >
-        <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" 
+        <webcam [height]="500" [width]="700" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
         [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
         [videoOptions]="videoOptions"
         [imageQuality]="1"
@@ -16,6 +16,8 @@
 </ng-container>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-raised-button color="primary" (click)="triggerSnapshot();">Ckick</button>
+      <button mat-raised-button color="primary" (click)="triggerSnapshot();">Click</button>
+      <button mat-raised-button color="secondary" (click)="sendNavigation(-1);">Previous</button>
+      <button mat-raised-button color="primary" (click)="sendNavigation(1);">Next</button>
     </mat-card-actions>
   </mat-card>

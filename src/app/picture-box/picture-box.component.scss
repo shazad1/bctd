@@ -6,4 +6,9 @@ mat-card {
         flex-direction: column;
         align-items: stretch;
     }
+    mat-card-actions {
+      button {
+        margin-right: 8px;;
+      }
+    }
 }
